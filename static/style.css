@@ -1,0 +1,105 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: #333;
+    padding: 10px;
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
+    margin-right: 15px;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.category-list, .notes-list, .cart-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.category-card, .note-card, .cart-item {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin: 10px;
+    width: 250px;
+    text-align: center;
+}
+
+.note-card img, .cart-item img{
+    max-width: 100%;
+}
+
+.category-card img {
+    height: 20vh;
+}
+
+.btn {
+    display: inline-block;
+    padding: 8px 15px;
+    background: green;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+.btn:hover {
+    background: darkgreen;
+}
+
+.remove-btn {
+    background: red;
+}
+
+.remove-btn:hover {
+    background: darkred;
+}
+
+.pay-btn {
+    background: blue;
+}
+
+footer {
+    text-align: center;
+    padding: 15px;
+    background: #333;
+    color: white;
+    margin-top: 20px;
+}
+
+.messages {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+}
+
+.messages li {
+    padding: 10px;
+    margin: 10px;
+    border-radius: 4px;
+}
+
+.messages .success {
+    background: lightgreen;
+}
+
+.messages .error {
+    background: pink;
+}
+
+.messages .warning {
+    background: lightyellow;
+}

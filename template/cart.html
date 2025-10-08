@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Your Cart</h1>
+{% if CItem %}
+    <div class="cart-list">
+        {% for item in CItem %}
+            <div class="cart-item">
+                {% if item.note.thumbnail %}
+                    <img src="{{ item.note.thumbnail.url }}" alt="{{ item.note.title }}" width="100">
+                {% endif %}
+                <h3>{{ item.note.title }}</h3>
+                <p>₹{{ item.note.price }}</p>
+                <a href="{% url 'remove' item.id %}" class="btn remove-btn">Remove</a>
+            </div>
+        {% endfor %}
+    </div>
+    <h2>Total: ₹{{ total }}</h2>
+    <a href="{% url 'payment-success' %}" class="btn pay-btn">Proceed to Pay</a>
+{% else %}
+    <p>Your cart is empty.</p>
+{% endif %}
+{% endblock %}

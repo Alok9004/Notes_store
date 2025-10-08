@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>My Notes</h1>
+{% if notes %}
+    <div class="notes-list">
+        {% for note in notes %}
+            <div class="note-card">
+                {% if note.thumbnail %}
+                    <img src="{{ note.thumbnail.url }}" alt="{{ note.title }}" width="150">
+                {% endif %}
+                <h3>{{ note.title }}</h3>
+                <p>{{ note.description|truncatewords:20 }}</p>
+                <a href="{{ note.file.url }}" class="btn">Download</a>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p>No notes purchased yet.</p>
+{% endif %}
+{% endblock %}
+

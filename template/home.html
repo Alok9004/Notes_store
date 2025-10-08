@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<!-- Hero Section -->
+<section class="hero">
+    <h1>Welcome to Notes Store 📚</h1>
+    <p>Buy and download high-quality study notes for CSE, Frontend, Backend, DevOps, Fashion Design and more!</p>
+    {% if not user.is_authenticated %}
+        <a href="{% url 'register' %}" class="btn">Get Started</a>
+    {% endif %}
+</section>
+
+<section class="about">
+    <h2>About Us</h2>
+    <p>
+        Notes Store is your one-stop platform for digital learning resources. 
+        Whether you’re a Computer Science student or a Fashion Design enthusiast,  
+        you can find, purchase, and access detailed notes written by experts.
+    </p>
+</section>
+
+<section class="categories">
+    <h2>Browse by Category</h2>
+    <div class="category-list">
+        {% for category in categories %}
+            <div class="category-card">
+                <a href="{% url 'category-notes' category.id %}">
+                    <img src="{{ category.image.url }}" alt="{{ category.name }}" height="150vh" width="200vh">
+                    <h3>{{ category.name }}</h3>
+                </a>
+            </div>
+        {% empty %}
+            <p>No categories found.</p>
+        {% endfor %}
+    </div>
+</section>
+
+{% endblock %}
