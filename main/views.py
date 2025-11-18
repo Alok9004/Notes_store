@@ -6,7 +6,6 @@ from django.contrib import messages
 from .models import Note, CartItem, Category
 from .forms import LoginForm, RegistrationForm
 
-# Create your views here.
 
 def home(request):
     obj=Category.objects.all()
@@ -30,13 +29,14 @@ def Register_view(request):
     return render(request,'register.html', {'form':form})
 
 def login_view(request):
+    next_url = request.GET.get('next')  # get next URL
     if request.method=='POST':
         form=LoginForm(request.POST)
         if form.is_valid():
             user=authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password'])
             if user:
                 login(request,user)
-                return redirect('home')
+                return redirect(next_url or 'home')
             else:
                 messages.error(request, 'Invalid Username or Password')
     form=LoginForm()
@@ -56,7 +56,7 @@ def AddToCart(request,id):
 
 @login_required
 def cart(request):
-    obj= CartItem.objects.filter(user=request.user)
+    obj= CartItem.objects.filter(user=request.user, paid=False)
     total= sum(i.note.price for i in obj)
     return render(request,'cart.html',{'CItem':obj, 'total':total})
 
@@ -82,3 +82,4 @@ def mynotes(request):
     paid_items= CartItem.objects.filter(user=request.user, paid=True)
     notes= [item.note for item in paid_items]
     return render(request,'mynotes.html',{'notes':notes})
+

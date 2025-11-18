@@ -1,0 +1,32 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyc
+*.pyo
+*.pyd
+
+# SQLite databas
+env/
+
+# Ignore Django migration cache
+*.log
+*.migrations/
+
+# Ignore OS/system files
+.DS_Store
+
+# Environment files
+*.env
+venv/
+
+# Logs
+*.log
+
+# Media and static files
+/media
+/staticfiles
+
+# OS junk
+.DS_Store
+Thumbs.db
+
